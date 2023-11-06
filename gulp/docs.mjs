@@ -9,6 +9,7 @@ import { default as csso } from "gulp-csso";
 import { default as htmlclean } from "gulp-htmlclean";
 import { default as sourceMap } from "gulp-sourcemaps"; //to see in dev panel the path to original scss file with styles
 import { default as groupMedia } from "gulp-group-css-media-queries"; //to delete doubling media queries in css, used in dev mode bacuse get conflicted with sourceMapping
+import { default as webPCss } from "gulp-webp-css";
 
 import { default as server } from "gulp-server-livereload";
 import fs from "fs"; //for files control / delete etc
@@ -86,6 +87,7 @@ task("sass:docs", (done) => {
       // .pipe(sourceMap.init())
       .pipe(autoprefixer())
       .pipe(groupMedia())
+      .pipe(webPCss())
       .pipe(scss())
       .pipe(csso())
       // .pipe(sourceMap.write())

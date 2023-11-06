@@ -13,8 +13,7 @@ import webpack from "webpack-stream";
 import webpackConfig from "../webpack.config.js";
 import babel from "gulp-babel";
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
-import changed from "gulp-changed";
-import changedInPlace from "gulp-changed-in-place";
+import { default as changed, compareContents } from "gulp-changed";
 
 const scss = gulpSass(sass);
 
@@ -42,15 +41,11 @@ task("clean:dev", (done) => {
 task("html:dev", (done) => {
   return src(["./src/html/**/*.html", "!./src/html/blocks/*.html"])
     .pipe(plumber(getPlumberNotifySettings("HTML")))
+    .pipe(changed("build", { hasChanged: compareContents }))
     .pipe(
       fileInclude({
         prefix: "@@",
         basepath: "@file",
-      })
-    )
-    .pipe(
-      changedInPlace({
-        firstPass: true,
       })
     )
     .pipe(dest("./build/"));
@@ -60,15 +55,13 @@ task("html:dev", (done) => {
  * For scss compile
  */
 task("sass:dev", (done) => {
-  return (
-    src("./src/scss/*.scss")
-      // .pipe(sassGlob())
-      .pipe(plumber(getPlumberNotifySettings("SCSS")))
-      .pipe(sourceMap.init())
-      .pipe(scss())
-      .pipe(sourceMap.write())
-      .pipe(dest("./build/css"))
-  );
+  return src("./src/scss/*.scss")
+    .pipe(sassGlob())
+    .pipe(plumber(getPlumberNotifySettings("SCSS")))
+    .pipe(sourceMap.init())
+    .pipe(scss())
+    .pipe(sourceMap.write())
+    .pipe(dest("./build/css"));
 });
 
 /**
@@ -99,12 +92,14 @@ task("files:dev", (done) => {
 });
 
 task("js:dev", (done) => {
-  return src("./src/js/*.js")
-    .pipe(changed("./build/js"))
-    .pipe(plumber(getPlumberNotifySettings("JS")))
-    // .pipe(babel())
-    .pipe(webpack(webpackConfig))
-    .pipe(dest("./build/js"));
+  return (
+    src("./src/js/*.js")
+      .pipe(changed("./build/js"))
+      .pipe(plumber(getPlumberNotifySettings("JS")))
+      // .pipe(babel())
+      .pipe(webpack(webpackConfig))
+      .pipe(dest("./build/js"))
+  );
 });
 
 /**
