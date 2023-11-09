@@ -10,7 +10,7 @@ import { default as sourceMap } from "gulp-sourcemaps"; //to see in dev panel th
 import plumber from "gulp-plumber";
 import notify from "gulp-notify";
 import webpack from "webpack-stream";
-import webpackConfig from "../webpack.config.js";
+import webpackConfig from "../webpack.config.dev.js";
 import babel from "gulp-babel";
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 import { default as changed, compareContents } from "gulp-changed";

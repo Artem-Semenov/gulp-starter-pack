@@ -19,7 +19,7 @@ import plumber from "gulp-plumber";
 import notify from "gulp-notify";
 
 import webpack from "webpack-stream";
-import webpackConfig from "../webpack.config.js";
+import webpackConfig from "../webpack.config.prod.js";
 import babel from "gulp-babel";
 
 import changed from "gulp-changed";
@@ -99,18 +99,20 @@ task("sass:docs", (done) => {
  * To copy images from src to docs
  */
 task("images:docs", (done) => {
-  return src("./src/img/**/*")
-    .pipe(changed("./docs/img/"))
-    .pipe(webp())
-    .pipe(dest("./docs/img/"))
-    .pipe(src("./src/img/**/*"))
-    .pipe(changed("./docs/img/"))
-    .pipe(
+  return (
+    src("./src/img/**/*")
+      .pipe(changed("./docs/img/"))
+      .pipe(webp())
+      .pipe(dest("./docs/img/"))
+      .pipe(src("./src/img/**/*"))
+      .pipe(changed("./docs/img/"))
+      /* .pipe(
       imagemin({
         verbose: true,
       })
-    )
-    .pipe(dest("./docs/img/"));
+    ) */
+      .pipe(dest("./docs/img/"))
+  );
 });
 
 /**
