@@ -82,7 +82,7 @@ task("html:docs", (done) => {
 task("sass:docs", (done) => {
   return (
     src("./src/scss/*.scss")
-      // .pipe(sassGlob())
+      .pipe(sassGlob())
       .pipe(plumber(getPlumberNotifySettings("SCSS")))
       // .pipe(sourceMap.init())
       .pipe(autoprefixer())
