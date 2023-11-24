@@ -7,9 +7,7 @@ import sassGlob from "gulp-sass-glob"; //to make possible import *.scss fiels fr
 import autoprefixer from "gulp-autoprefixer";
 import { default as csso } from "gulp-csso";
 import { default as htmlclean } from "gulp-htmlclean";
-import { default as sourceMap } from "gulp-sourcemaps"; //to see in dev panel the path to original scss file with styles
 import { default as groupMedia } from "gulp-group-css-media-queries"; //to delete doubling media queries in css, used in dev mode bacuse get conflicted with sourceMapping
-import { default as webPCss } from "gulp-webp-css";
 
 import { default as server } from "gulp-server-livereload";
 import fs from "fs"; //for files control / delete etc
@@ -80,19 +78,14 @@ task("html:docs", (done) => {
  * For scss compile
  */
 task("sass:docs", (done) => {
-  return (
-    src("./src/scss/*.scss")
-      .pipe(sassGlob())
-      .pipe(plumber(getPlumberNotifySettings("SCSS")))
-      // .pipe(sourceMap.init())
-      .pipe(autoprefixer())
-      .pipe(groupMedia())
-      .pipe(webPCss())
-      .pipe(scss())
-      .pipe(csso())
-      // .pipe(sourceMap.write())
-      .pipe(dest("./docs/css"))
-  );
+  return src("./src/scss/*.scss")
+    .pipe(sassGlob())
+    .pipe(plumber(getPlumberNotifySettings("SCSS")))
+    .pipe(autoprefixer())
+    .pipe(groupMedia())
+    .pipe(scss())
+    .pipe(csso())
+    .pipe(dest("./docs/css"));
 });
 
 /**
@@ -143,12 +136,11 @@ task("js:docs", (done) => {
 });
 
 /**
- * Live server To copy images from src to docs
+ * Live server
  */
 task("server:docs", (done) => {
   return src("./docs").pipe(
     server({
-      livereload: true,
       open: true,
     })
   );

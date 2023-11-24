@@ -1,20 +1,31 @@
 .d-none {
-	display: none !important;
-}
-
-.visually-hidden {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	border: 0;
-	padding: 0;
-	white-space: nowrap;
-	clip-path: inset(100%);
-	clip: rect(0 0 0 0);
-	overflow: hidden;
+  display: none !important;
 }
 
 .no-scroll {
-	overflow-y: hidden;
+  overflow-y: hidden;
+}
+
+.hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.d-l {
+  display: none;
+}
+
+@media (min-width: $containerWidth) {
+  .d-l {
+    display: block;
+  }
+
+  .d-s {
+    display: none;
+  }
 }

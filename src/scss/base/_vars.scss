@@ -1,16 +1,37 @@
-:root {
-  --container-width: 500px;
-  --container-padding: 15px;
+$tabletSize: 768px;
+$desktopSizeM: 1024px;
+$desktopSizeL: 1440px;
 
-  --font-main: "Poppins", sans-serif;
-  --font-accent: "Playfair Display", serif;
+$containerWidth: 500px;
+$containerTabletMaxWidth: 800px;
+$containerdesktopSizeMMaxWidth: 1100px;
+$containerdesktopSizeLMaxWidth: 1300px;
+
+$font-main: "Poppins", sans-serif;
+$font-accent: "Playfair Display", serif;
+
+$containerPadding: 15px;
+
+:root {
+  --container-width: #{$containerWidth};
+  --container-padding: #{$containerPadding};
+  --font-main: #{$font-main};
+  --font-accent: #{$font-accent};
 
   --page-bg: #fff;
   --text-color: #000;
   --accent: #ac182c;
 
-  @media (min-width: 1024px) {
-    --container-width: 1024px;
+  @media (min-width: $tabletSize) {
+    --container-width: #{$containerTabletMaxWidth};
+  }
+
+  @media (min-width: $desktopSizeM) {
+    --container-width: #{$containerdesktopSizeMMaxWidth};
+  }
+
+  @media (min-width: $desktopSizeL) {
+    --container-width: #{$containerdesktopSizeLMaxWidth};
   }
 }
 

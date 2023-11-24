@@ -2,20 +2,21 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible"
-				content="IE=edge" />
-	<meta name="viewport"
-				content="width=device-width, initial-scale=1.0" />
-	<title></title>
-	<link rel="stylesheet"
-				href="./css/main.css" />
+
+	@@include('blocks/meta.html')
+	@@include('blocks/fonts.html')
 </head>
 
 <body>
+	@@include('blocks/svgSprite.html')
+
 	@@include('blocks/header.html', {
 	active: 'services',
 	})
+	<div class="main">
+
+
+	</div>
 	@@include('blocks/footer.html')
 	<script src="./js/index.bundle.js"></script>
 </body>

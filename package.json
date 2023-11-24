@@ -20,7 +20,6 @@
     "gulp-server-livereload": "^1.9.2",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-webp": "^5.0.0",
-    "gulp-webp-css": "^1.1.0",
     "gulp-webp-html": "^1.0.2",
     "sass": "^1.69.5",
     "style-loader": "^3.3.3",

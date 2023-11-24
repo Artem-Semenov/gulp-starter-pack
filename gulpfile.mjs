@@ -37,7 +37,6 @@ task(
       "fonts:docs",
       "files:docs",
       "js:docs"
-    ),
-    parallel("server:docs")
+    )
   )
 );

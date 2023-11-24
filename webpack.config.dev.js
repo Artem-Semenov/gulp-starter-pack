@@ -1,5 +1,6 @@
 const config = {
   mode: "production",
+  devtool: "source-map",
   entry: {
     index: "./src/js/index.js",
     // about: "./src/js/about.js",
