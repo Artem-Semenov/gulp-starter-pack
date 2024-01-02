@@ -12,6 +12,10 @@ $font-accent: "Playfair Display", serif;
 
 $containerPadding: 15px;
 
+$transition: 0.3s ease;
+
+$inputBg: rgba(32, 38, 31, 0.54);
+
 :root {
   --container-width: #{$containerWidth};
   --container-padding: #{$containerPadding};
@@ -21,6 +25,9 @@ $containerPadding: 15px;
   --page-bg: #fff;
   --text-color: #000;
   --accent: #ac182c;
+
+  --input-bg: #{$inputBg};
+  --caret-color: var(--text-color);
 
   @media (min-width: $tabletSize) {
     --container-width: #{$containerTabletMaxWidth};

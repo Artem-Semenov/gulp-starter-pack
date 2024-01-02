@@ -95,11 +95,11 @@ task("images:docs", (done) => {
   return (
     src("./src/img/**/*")
       .pipe(changed("./docs/img/"))
-      .pipe(webp())
-      .pipe(dest("./docs/img/"))
-      .pipe(src("./src/img/**/*"))
-      .pipe(changed("./docs/img/"))
-      /* .pipe(
+      //.pipe(webp())
+      //.pipe(dest("./docs/img/"))
+      //.pipe(src("./src/img/**/*"))
+      //.pipe(changed("./docs/img/"))
+      /*  .pipe(
       imagemin({
         verbose: true,
       })

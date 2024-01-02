@@ -3,24 +3,23 @@
 }
 
 .no-scroll {
-  overflow-y: hidden;
-}
-
-.hidden {
-  position: absolute;
-  width: 0;
-  height: 0;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  touch-action: none;
+  overflow: hidden;
 }
 
 .d-l {
   display: none;
 }
 
-@media (min-width: $containerWidth) {
+.zoom-hover {
+  transition: transform $transition;
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media (min-width: $desktopSizeM) {
   .d-l {
     display: block;
   }

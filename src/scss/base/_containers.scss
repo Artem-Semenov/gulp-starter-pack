@@ -2,6 +2,8 @@
 	padding: 0 var(--container-padding);
 	max-width: var(--container-width);
 	margin: 0 auto;
+  height: 100%;
+  width: 100%;
 }
 
 .container-right {
@@ -10,7 +12,7 @@
 		(100% - var(--container-width)) / 2 + var(--container-padding)
 	);
 
-	@media (max-width: var(--laptop-size)) {
+	@media (max-width: $tabletSize) {
 		padding-left: var(--container-padding);
 	}
 }
@@ -21,7 +23,7 @@
 		(100% - var(--container-width)) / 2 + var(--container-padding)
 	);
 
-	@media (max-width: var(--laptop-size)) {
+	@media (max-width: $tabletSize) {
 		padding-right: var(--container-padding);
 	}
 }
