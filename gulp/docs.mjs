@@ -25,7 +25,6 @@ import changedInPlace from "gulp-changed-in-place";
 
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 import webp from "gulp-webp";
-import gulpHtmlImgWrapper from "gulp-html-img-wrapper";
 
 const scss = gulpSass(sass);
 
