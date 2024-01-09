@@ -10,10 +10,12 @@ import { default as sourceMap } from "gulp-sourcemaps"; //to see in dev panel th
 import plumber from "gulp-plumber";
 import notify from "gulp-notify";
 import webpack from "webpack-stream";
-import webpackConfig from "../webpack.config.dev.js";
+import getWebpackConfig from "../webpack.config.js";
 import { default as changed, compareContents } from "gulp-changed";
 
 const scss = gulpSass(sass);
+
+const webpackConfig = getWebpackConfig({mode: 'development'});
 
 const { task, src, dest, watch, parallel, series } = gulp;
 

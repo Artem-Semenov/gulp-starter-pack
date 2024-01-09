@@ -17,7 +17,7 @@ import plumber from "gulp-plumber";
 import notify from "gulp-notify";
 
 import webpack from "webpack-stream";
-import webpackConfig from "../webpack.config.prod.js";
+import getWebpackConfig from "../webpack.config.js";
 import babel from "gulp-babel";
 
 import changed from "gulp-changed";
@@ -25,6 +25,8 @@ import changedInPlace from "gulp-changed-in-place";
 
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from "gulp-imagemin";
 import webp from "gulp-webp";
+
+const webpackConfig = getWebpackConfig({mode: 'production'});
 
 const scss = gulpSass(sass);
 
@@ -56,12 +58,6 @@ task("html:docs", (done) => {
       fileInclude({
         prefix: "@@",
         basepath: "@file",
-      })
-    )
-    .pipe(
-      gulpHtmlImgWrapper({
-        logger: true, // false for not showing message with amount of wrapped img tags for each file
-        extensions: [".jpg", ".png", ".jpeg"], // write your own extensions pack (case insensitive)
       })
     )
     .pipe(
